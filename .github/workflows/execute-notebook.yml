@@ -1,0 +1,30 @@
+name: Execute notebook
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify-notebook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Execute all notebook cells
+        run: |
+          jupyter nbconvert --to notebook --execute DataVine_Analytics_Summative_Lab.ipynb \
+            --output DataVine_Verified.ipynb --ExecutePreprocessor.timeout=900

@@ -1,0 +1,22 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter checkpoints and headless verification outputs
+.ipynb_checkpoints/
+DataVine_Verified.ipynb
+
+# Python bytecode and packaging
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Temporary outputs, editors and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
